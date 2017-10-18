@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>PunchClock</title>
-    
+
     <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/main.css" />
-    
+
     <!-- ANGULAR -->
     <script src="js/external/angular.min.js"></script>
     <script src="js/external/angular-local-storage.js"></script>
@@ -15,16 +15,18 @@
     <!-- END ANGULAR -->
     <!--<script src="//code.jquery.com/jquery-1.12.0.min.js" defer></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js" defer></script>-->
+    <script src="https://cdn.auth0.com/js/lock/10.20/lock.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 
 <body ng-app="punchclock" ng-controller="ClockController as ClockControl">
-        
+
     <!-- Section where we have the top button controls -->
     <div class="mainSection container-fluid">
         <button ng-click="ClockControl.addClock()" id="createClock" class="btn btn-primary" type="button">+ Add a Clock</button>
 
         <button ng-click="ClockControl.resetClocks()" id="resetClocks" class="btn btn-secondary" type="button">Reset Clocks</button>
-        
+
         <!-- <button ng-click="ClockControl.printClocks()" class="btn btn-secondary" type="button">Print Clocks</button> -->
     </div>
 
@@ -78,7 +80,7 @@
         <button ng-click="ClockControl.showingTotals = true" ng-show="ClockControl.clocks.length > 0 && !ClockControl.showingTotals" id="showTotals" class="btn btn-primary" type="button">Show Totals</button>
         <button ng-click="ClockControl.showingTotals = false" ng-show="ClockControl.clocks.length > 0 && ClockControl.showingTotals" id="hideTotals" class="btn btn-secondary" type="button">Hide Totals</button>
     </div>
-    
+
     <!-- Where the totals are displayed -->
     <div ng-show="ClockControl.clocks.length > 0 && ClockControl.showingTotals" class="mainSection container-fluid">
         <div ng-repeat="clock in ClockControl.clocks" ng-show="clock.seconds >= 60" class="col-xs-12">
@@ -88,9 +90,9 @@
             <span><b>Total: {{ClockControl.totalTime() | HHMI}}</b></span>
         </div>
     </div>
-    
+
     <div class="mainSection bottomBuffer container-fluid"></div>
-    
+
 </body>
 
 </html>
